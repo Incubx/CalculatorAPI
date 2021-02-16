@@ -3,6 +3,8 @@ package shevtsov.denis.calculator_api.Service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CalculatorService {
+public interface CalculatorService {
+
+    double evaluate(String expression) throws ArithmeticException, IllegalArgumentException;
 
 }

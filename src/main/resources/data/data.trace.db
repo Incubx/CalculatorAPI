@@ -202,3 +202,20 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "USERS" не найдена
 Table "USERS" not found; SQL statement:
 INSERT INTO users (id,username, password) VALUES (1,'user1', '$2y$12$fIgG2PQ10yEE9xyFCzWtsuuWq6S2/BTSPdrwEZeMpFNKdBzLKMevC'), (2,'user2', '$2y$12$jepfXKRfMsXtIkwIqNNfruEHtrIvdgubYDAN.tpt2PmRDiDPmBjsy' ) [42102-200]
+2021-02-17 18:55:42 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:168)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 9 more

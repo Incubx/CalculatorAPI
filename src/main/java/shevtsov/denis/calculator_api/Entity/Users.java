@@ -1,14 +1,13 @@
 package shevtsov.denis.calculator_api.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String username;
@@ -20,6 +19,9 @@ public class Users {
         this.username = username;
         this.password = password;
     }
+
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
+    List<Record> records;
 
     public Users() {
 

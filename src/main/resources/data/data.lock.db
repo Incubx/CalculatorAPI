@@ -1,0 +1,6 @@
+#FileLock
+#Wed Feb 17 16:51:33 MSK 2021
+server=192.168.9.9\:50460
+hostName=192.168.9.9
+method=file
+id=177b0429d0671ce57fa83f282397d0d6924da7b66ae

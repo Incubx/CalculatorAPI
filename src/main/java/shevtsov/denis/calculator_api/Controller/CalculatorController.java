@@ -3,6 +3,8 @@ package shevtsov.denis.calculator_api.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,8 +25,8 @@ public class CalculatorController {
 
 
     @GetMapping("")
-    public ResponseEntity<Double> evaluateExpression(@RequestParam("expression") String expression){
-        System.out.println(expression);
+    public ResponseEntity<Double> evaluateExpression(@AuthenticationPrincipal User user, @RequestParam("expression") String expression){
+        System.out.println(user.getUsername());
         try{
             double result = calculatorService.evaluate(expression);
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -35,6 +37,5 @@ public class CalculatorController {
         catch (ArithmeticException ex){
             return new ResponseEntity<>(null,HttpStatus.UNPROCESSABLE_ENTITY);
         }
-
     }
 }

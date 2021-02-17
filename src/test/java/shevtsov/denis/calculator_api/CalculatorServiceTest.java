@@ -18,8 +18,8 @@ public class CalculatorServiceTest {
     public void evaluateExpressionTest() {
         CalculatorService service = new LibraryCalculatorService();
 
-        Assertions.assertEquals(0.24, service.evaluate(simpleExp));
+        //Assertions.assertEquals(0.24, service.evaluate(simpleExp));
         //Assertions.assertThrows(ArithmeticException.class, () -> service.evaluate(dividingByZeroExp));
-        //Assertions.assertThrows(IllegalArgumentException.class, () -> service.evaluate(wrongExp));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> service.evaluate(wrongExp));
     }
 }

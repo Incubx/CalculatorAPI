@@ -23,7 +23,7 @@ public class Record {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users users;
+    private UserInfo userInfo;
 
     public Record() {
     }
@@ -52,7 +52,13 @@ public class Record {
         this.result = result;
     }
 
+    public UserInfo getUser() {
+        return userInfo;
+    }
 
+    public void setUser(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -61,4 +67,6 @@ public class Record {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+
 }

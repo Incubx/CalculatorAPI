@@ -25,8 +25,7 @@ public class CalculatorController {
 
 
     @GetMapping("")
-    public ResponseEntity<Double> evaluateExpression(@AuthenticationPrincipal User user, @RequestParam("expression") String expression){
-        System.out.println(user.getUsername());
+    public ResponseEntity<Double> evaluateExpression(@RequestParam("expression") String expression){
         try{
             double result = calculatorService.evaluate(expression);
             return new ResponseEntity<>(result, HttpStatus.OK);

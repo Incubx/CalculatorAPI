@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import shevtsov.denis.calculator_api.Entity.Users;
+import shevtsov.denis.calculator_api.Entity.UserInfo;
 import shevtsov.denis.calculator_api.Repository.UserRepository;
 
 import java.util.ArrayList;
@@ -28,12 +28,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Users> usersOpt = userRepository.findByUsername(username);
+        Optional<UserInfo> usersOpt = userRepository.findByUsername(username);
 
         if (usersOpt.isEmpty())
             throw new UsernameNotFoundException("User not found");
 
-        Users users = usersOpt.get();
+        UserInfo users = usersOpt.get();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("USER"));
 

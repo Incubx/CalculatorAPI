@@ -1,7 +1,8 @@
 package shevtsov.denis.calculator_api.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -12,10 +13,16 @@ public class UserInfo {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     public UserInfo() {
+    }
 
+    public UserInfo(Integer id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {

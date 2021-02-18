@@ -7,8 +7,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import shevtsov.denis.calculator_api.Repository.RecordRepository;
-import shevtsov.denis.calculator_api.Repository.UserRepository;
 import shevtsov.denis.calculator_api.Service.RecordService;
 
 
@@ -18,24 +16,11 @@ public class RequestHistoryAspect {
 
     private RecordService recordService;
 
-    private RecordRepository recordRepository;
-
-    private UserRepository userRepository;
-
     @Autowired
     public void setRecordService(RecordService recordService) {
         this.recordService = recordService;
     }
 
-    @Autowired
-    public void setRecordRepository(RecordRepository recordRepository) {
-        this.recordRepository = recordRepository;
-    }
-
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Pointcut("@annotation(SaveRequestHistory)")
     public void saveRequestRecord() {

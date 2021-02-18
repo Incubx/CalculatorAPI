@@ -28,6 +28,14 @@ public class Record {
     public Record() {
     }
 
+    public Record(int id, String expression, String result, Date timestamp, UserInfo userInfo) {
+        this.id = id;
+        this.expression = expression;
+        this.result = result;
+        this.timestamp = timestamp;
+        this.userInfo = userInfo;
+    }
+
     public int getId() {
         return id;
     }

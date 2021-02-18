@@ -10,7 +10,6 @@ import shevtsov.denis.calculator_api.Entity.UserInfo;
 import shevtsov.denis.calculator_api.Repository.RecordRepository;
 import shevtsov.denis.calculator_api.Repository.UserRepository;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +36,7 @@ public class RecordService {
         recordRepository.save(record);
     }
 
+    //Method creates Record from expression and result, using Authentication to get Principal
     private Record getRecord(String expression, String result) {
         Record record = new Record();
         record.setExpression(expression);
@@ -44,13 +44,12 @@ public class RecordService {
         record.setTimestamp(new Date());
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) auth.getPrincipal();
-        Optional<UserInfo> userInfo = userRepository.findByUsername(user.getUsername());
-        if (userInfo.isPresent())
-            record.setUser(userInfo.get());
-        else
-            record.setUser(null);
-
+        record.setUser(null);
+        if (auth != null) {
+            User user = (User) auth.getPrincipal();
+            Optional<UserInfo> userInfo = userRepository.findByUsername(user.getUsername());
+            userInfo.ifPresent(record::setUser);
+        }
         return record;
     }
 
@@ -63,10 +62,7 @@ public class RecordService {
     }
 
     public List<Record> findByUsername(String username) {
-        Optional<UserInfo> userInfo = userRepository.findByUsername(username);
-        if (userInfo.isPresent())
-            return recordRepository.findRecordsByUserInfo(userInfo.get());
-        else return new ArrayList<>();
+            return recordRepository.findRecordsByUserInfoUsername(username);
     }
 
 }

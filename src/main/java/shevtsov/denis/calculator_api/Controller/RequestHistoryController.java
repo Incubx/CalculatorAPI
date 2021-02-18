@@ -25,7 +25,7 @@ public class RequestHistoryController {
         this.recordService = recordService;
     }
 
-    @GetMapping("byDate")
+    @GetMapping("date")
     public ResponseEntity<List<Record>> getRecordsByDate(
             @RequestParam("startDate")@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date startDate,
             @RequestParam("endDate")@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date endDate){
@@ -33,13 +33,13 @@ public class RequestHistoryController {
         return new ResponseEntity<>(records, HttpStatus.OK);
     }
 
-    @GetMapping("byExpression")
+    @GetMapping("expression")
     public ResponseEntity<List<Record>> getRecordsByExpression(@RequestParam("expression") String expression){
         List<Record> records = recordService.findByExpression(expression);
         return new ResponseEntity<>(records, HttpStatus.OK);
     }
 
-    @GetMapping("byUser")
+    @GetMapping("user")
     public ResponseEntity<List<Record>> getRecordsByUser(@RequestParam("username")String username){
         List<Record> records = recordService.findByUsername(username);
         return new ResponseEntity<>(records, HttpStatus.OK);

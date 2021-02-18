@@ -21,7 +21,7 @@ public class RequestHistoryAspect {
         this.recordService = recordService;
     }
 
-
+    //All methods marked with SaveRequestHistory annotation is being passed to advices
     @Pointcut("@annotation(SaveRequestHistory)")
     public void saveRequestRecord() {
     }
@@ -35,11 +35,11 @@ public class RequestHistoryAspect {
 
     @AfterThrowing(pointcut = "saveRequestRecord()", throwing = "arithmeticException")
     public void saveRequestRecordCall(JoinPoint jp, ArithmeticException arithmeticException) {
-        recordService.saveRecord((String) jp.getArgs()[0], "dividing by zero!");
+        recordService.saveRecord((String) jp.getArgs()[0], "Division by zero!");
     }
 
     @AfterThrowing(pointcut = "saveRequestRecord()", throwing = "argumentException")
     public void saveRequestRecordCall(JoinPoint jp, IllegalArgumentException argumentException) {
-        recordService.saveRecord((String) jp.getArgs()[0], "wrong expression");
+        recordService.saveRecord((String) jp.getArgs()[0], "Wrong expression");
     }
 }

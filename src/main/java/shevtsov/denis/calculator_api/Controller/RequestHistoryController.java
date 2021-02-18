@@ -16,6 +16,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("history")
+/*
+All search parameters is passed by request parameters
+ */
 public class RequestHistoryController {
 
     private RecordService recordService;

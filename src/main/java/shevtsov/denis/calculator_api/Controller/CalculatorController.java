@@ -12,7 +12,7 @@ import shevtsov.denis.calculator_api.Service.CalculatorService;
 @RestController
 @RequestMapping("evaluate")
 public class CalculatorController {
-
+    //Exp4jCalculatorService is used
     private CalculatorService calculatorService;
 
     @Autowired

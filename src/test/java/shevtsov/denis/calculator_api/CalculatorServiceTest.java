@@ -2,12 +2,8 @@ package shevtsov.denis.calculator_api;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import shevtsov.denis.calculator_api.Entity.Record;
 import shevtsov.denis.calculator_api.Service.CalculatorService;
-import shevtsov.denis.calculator_api.Service.LibraryCalculatorService;
-
-import java.util.ArrayList;
-import java.util.List;
+import shevtsov.denis.calculator_api.Service.Exp4JCalculatorService;
 
 public class CalculatorServiceTest {
 
@@ -15,7 +11,7 @@ public class CalculatorServiceTest {
     private static final String wrongExp = "3.5+((2-6)";
     private static final String dividingByZeroExp = "(3+2)/(5-5)";
 
-    CalculatorService service = new LibraryCalculatorService();
+    CalculatorService service = new Exp4JCalculatorService();
 
     @Test
     public void evaluateSimpleExpressionTest() {

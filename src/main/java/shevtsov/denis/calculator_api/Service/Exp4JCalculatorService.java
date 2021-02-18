@@ -7,7 +7,7 @@ import shevtsov.denis.calculator_api.aspects.SaveRequestHistory;
 
 
 @Service
-public class LibraryCalculatorService implements CalculatorService {
+public class Exp4JCalculatorService implements CalculatorService {
 
     @Override
     @SaveRequestHistory
